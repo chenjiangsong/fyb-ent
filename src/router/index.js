@@ -5,9 +5,11 @@ import Hello from '@/components/Hello'
 Vue.use(Router)
 
 export default new Router({
+  base: '/fybWeixinEnt/',
+  mode: 'history',
   routes: [
     {
-      path: '/',
+      path: '/me',
       name: 'Hello',
       component: Hello
     }

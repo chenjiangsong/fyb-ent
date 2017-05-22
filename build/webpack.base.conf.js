@@ -1,6 +1,7 @@
 var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
+var webpack = require('webpack')
 var vueLoaderConfig = require('./vue-loader.conf')
 
 function resolve (dir) {
@@ -9,7 +10,12 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    app: './src/main.js'
+    app: './src/main.js',
+    vue_common: [
+      'vue',
+      'vue-router',
+      './src/global.js'
+    ]
   },
   output: {
     path: config.build.assetsRoot,
@@ -22,7 +28,8 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src')
+      '@': resolve('src'),
+      'api': resolve('src/api/')
     }
   },
   module: {

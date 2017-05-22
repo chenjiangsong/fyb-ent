@@ -6,9 +6,15 @@ import router from './router'
 
 Vue.config.productionTip = false
 
+import { my } from 'api'
+
+my.getUserInfo().then((res) => {
+  console.log(res)
+})
+
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
+  el: '#mod-app',
   router,
   template: '<App/>',
   components: { App }
