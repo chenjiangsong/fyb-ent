@@ -3,19 +3,20 @@ var utils = require('./utils')
 var config = require('../config')
 var webpack = require('webpack')
 var vueLoaderConfig = require('./vue-loader.conf')
+var vuxLoader = require('vux-loader')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
-module.exports = {
+var webpackConfig = {
   entry: {
-    app: './src/main.js',
     vue_common: [
       'vue',
       'vue-router',
       './src/global.js'
-    ]
+    ],
+    app: './src/main.js',
   },
   output: {
     path: config.build.assetsRoot,
@@ -72,3 +73,7 @@ module.exports = {
     ]
   }
 }
+
+module.exports = vuxLoader.merge(webpackConfig, {
+  plugins: ['vux-ui', 'progress-bar', 'duplicate-style', 'inline-manifest']
+})

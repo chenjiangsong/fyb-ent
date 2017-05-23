@@ -16,7 +16,9 @@
   "dependencies": {
     "axios": "^0.16.1",
     "vue": "^2.2.6",
-    "vue-router": "^2.3.1"
+    "vue-router": "^2.3.1",
+    "vux": "^2.3.1",
+    "vux-loader": "^1.0.62"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
@@ -60,6 +62,7 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "0.0.30",
     "karma-webpack": "^2.0.2",
+    "less-loader": "^4.0.3",
     "lolex": "^1.5.2",
     "mocha": "^3.2.0",
     "mockjs": "^1.0.1-beta3",

@@ -30,9 +30,9 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       mockServer: {
-        changeOrigin: true,
         target: 'http://fe.iwjw.com:8888/api/fete_api/2BmE9Z/5kbe8B/mock',
         filter: function(pathname, req) {
+          console.log(pathname)
           return /fyb/.test(req.url)
         }
       }
