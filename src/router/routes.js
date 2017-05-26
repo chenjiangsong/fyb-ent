@@ -1,7 +1,6 @@
 import Home from './route/home'
-import FindHouse from './route/findhouse'
+// import FindHouse from './route/findhouse'
 
-export default [
-  Home,
-  FindHouse
-]
+export default [].concat(
+  Home
+)

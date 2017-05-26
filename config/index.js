@@ -32,9 +32,11 @@ module.exports = {
       mockServer: {
         target: 'http://fe.iwjw.com:8888/api/fete_api/2BmE9Z/5kbe8B/mock',
         filter: function(pathname, req) {
-          console.log(pathname)
-          return /fyb/.test(req.url)
-        }
+          return /api/.test(req.url)
+        },
+        pathRewrite: {
+            '^/api/old-path' : '/apii/new-path',     // rewrite path
+        },
       }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
