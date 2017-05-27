@@ -10,27 +10,27 @@ export const homeTabList = [
   {
     url: '/fyb/house/search',
     text: '找房',
-    page: 'houseSearch',
+    page: 'searchHome',
     iconClass: 'icon-message'
   },
   {
     url: '/fyb/house/publish',
     text: '发房',
-    page: 'housePublish',
+    page: 'publishHome',
     iconClass: 'icon-tab_add',
     defaultSelected: true
   },
   {
     url: '/fyb/house/union',
     text: '联盟',
-    page: 'houseLeague',
+    page: 'unionHome',
     iconClass: 'icon-share_label'
     // url: window.pageConfig.siteUrl + 'fyb/house/league'
   },
   {
     url: '/fyb/house/my',
     text: '我的',
-    page: 'houseMy',
+    page: 'myHome',
     iconClass: 'icon-tab_account'
   }
 ]

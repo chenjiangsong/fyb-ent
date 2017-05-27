@@ -1,6 +1,11 @@
-import Home from './route/home'
-// import FindHouse from './route/findhouse'
+import Search from './route/search'
+import Publish from './route/publish'
+import Union from './route/union'
+import My from './route/my'
 
 export default [].concat(
-  Home
+  Search,
+  Publish,
+  Union,
+  My
 )

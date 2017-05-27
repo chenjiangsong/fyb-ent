@@ -1,6 +1,6 @@
 <template>
-  <div class="fyb-home-wrap">
-    <tabbar>
+  <div class="tabbar-wrap">
+     <tabbar>
       <tabbar-item
         v-for="tab in tabList"  
         :selected="currPage === tab.page"
@@ -15,9 +15,6 @@
         <span slot="label">{{tab.text}}</span>
       </tabbar-item>
     </tabbar>
-    
-    <router-view></router-view>
-
   </div>
 </template>
 <script>
@@ -42,7 +39,7 @@ export default {
 }
 </script>
 <style lang="less">
-.fyb-home-wrap{
+.tabbar-wrap{
   height: 100%;
   .iconfont{
     color: #fff;
