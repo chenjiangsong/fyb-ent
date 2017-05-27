@@ -5,7 +5,7 @@ const Home = r => require.ensure([], require => r(require('@/containers/home/ind
 
 export default [
   {
-    path: 'fyb/house',
+    path: '/fyb/house',
     name: 'home',
     component: Home
   }
