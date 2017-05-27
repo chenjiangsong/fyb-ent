@@ -8,27 +8,27 @@ export const iconfontCDN = '//at.alicdn.com/t/font_ozwejidwlixry66r.css'
  */
 export const homeTabList = [
   {
-    url: '/fyb/search',
+    url: '/fyb/house/search',
     text: '找房',
     page: 'houseSearch',
     iconClass: 'icon-message'
   },
   {
-    url: '/fyb/publish',
+    url: '/fyb/house/publish',
     text: '发房',
     page: 'housePublish',
     iconClass: 'icon-tab_add',
     defaultSelected: true
   },
   {
-    url: '/fyb/union',
+    url: '/fyb/house/union',
     text: '联盟',
     page: 'houseLeague',
     iconClass: 'icon-share_label'
     // url: window.pageConfig.siteUrl + 'fyb/house/league'
   },
   {
-    url: '/fyb/my',
+    url: '/fyb/house/my',
     text: '我的',
     page: 'houseMy',
     iconClass: 'icon-tab_account'

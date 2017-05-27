@@ -15,7 +15,7 @@
         <span slot="label">{{tab.text}}</span>
       </tabbar-item>
     </tabbar>
-
+    
     <router-view></router-view>
 
   </div>
