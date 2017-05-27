@@ -5,12 +5,10 @@
 </template>
 
 <script>
-import { isObject } from 'util'
 
 export default {
   name: 'app',
   mounted () {
-    console.log(isObject(null))
   }
 }
 </script>
