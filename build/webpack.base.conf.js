@@ -14,7 +14,7 @@ var webpackConfig = {
     vue_common: [
       'vue',
       'vue-router',
-      './src/global.js'
+      './src/global/'
     ],
     app: './src/main.js',
   },
@@ -30,7 +30,8 @@ var webpackConfig = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
-      'api': resolve('src/api/')
+      'api': resolve('src/api/'),
+      'util': resolve('src/global/util')
     }
   },
   module: {
