@@ -35,7 +35,7 @@ module.exports = {
           return /api/.test(req.url)
         },
         pathRewrite: {
-            '^/api/old-path' : '/apii/new-path',     // rewrite path
+            '/api' : '',     // rewrite path
         },
       }
     },
