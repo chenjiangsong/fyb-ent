@@ -1,5 +1,7 @@
 import axios from 'axios'
 
-export function get(url, params) {
-  return axios.get(url, { params })
-}
+const v = axios.create()
+
+v.defaults.timeout = 2500
+
+console.log(v.defaults)
