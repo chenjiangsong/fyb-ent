@@ -1,13 +1,26 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <transition name="bounce">
+      <router-view></router-view>
+    </transition>
+    <loading v-model="renderStatus"></loading>
   </div>
 </template>
 
 <script>
+import { Loading } from 'vux'
+import { mapState } from 'vuex'
 
 export default {
   name: 'app',
+  components: {
+    Loading
+  },
+  computed: {
+    ...mapState({
+      renderStatus: state => state.assist.renderStatus
+    })
+  },
   data () {
     return {
       transitionName: ''
@@ -30,6 +43,8 @@ html, body{
 #app{
   height: 100%;
 }
+
+
 /*#app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

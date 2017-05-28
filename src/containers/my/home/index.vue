@@ -1,7 +1,6 @@
 <template>
   <div class="publish-home-wrap">
     个人中心首页
-    
     <!--foot tabbar-->
     <tabbar></tabbar>
   </div>

@@ -6,6 +6,9 @@ import router from './router'
 import store from './store'
 import { sync } from 'vuex-router-sync'
 import 'vux/src/styles/weui/weui.less'
+import FastClick from 'fastclick'
+
+FastClick.attach(document.body)
 
 Vue.config.productionTip = false
 
@@ -14,6 +17,7 @@ sync(store, router)
 new Vue({
   el: '#mod-app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })
