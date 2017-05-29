@@ -81,6 +81,16 @@ devMiddleware.waitUntilValid(() => {
   _resolve()
 })
 
+// require('./mock.server')
+
+// var mockServer = express()
+
+// mockServer.get('/', function(req, res) {
+//   res.send('Hello world')
+// })
+
+// mockServer.listen(8081)
+
 var server = app.listen(port)
 
 module.exports = {

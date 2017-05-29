@@ -20,7 +20,7 @@ history.setItem('/', 0)
 router.beforeEach((to, from, next) => {
   const toIndex = history.getItem(to.path)
   const fromIndex = history.getItem(from.path)
-  console.log(to.path)
+
   store.commit('updateRenderStatus', {isRendering: true})
   if (toIndex) {
     if (!fromIndex) {

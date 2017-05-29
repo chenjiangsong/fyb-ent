@@ -1,8 +1,8 @@
 import axios from 'axios'
 
 import {
-  myRoot
-} from './root'
+  myUrls
+} from './urls'
 
 /**
  *  封装axios get方法
@@ -28,7 +28,7 @@ function get (url, params) {
 
 const my = {
   getUserInfo (params) {
-    return get(myRoot + '/getUserInfo', params)
+    return get(myUrls.userInfo, params)
   }
 }
 

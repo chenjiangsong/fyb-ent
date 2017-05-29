@@ -30,7 +30,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       mockServer: {
-        target: 'http://fe.iwjw.com:8888/api/fete_api/2BmE9Z/5kbe8B/mock',
+        target: 'http://127.0.0.1:8081',
         filter: function(pathname, req) {
           return /api/.test(req.url)
         },
