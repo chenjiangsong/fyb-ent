@@ -7,14 +7,10 @@ const apiRoot = process.env.API_ROOT
 const root = window.pageConfig.siteUrl + apiRoot
 
 /**
- * 个人中心 api url
+ * 个人中心 root
  */
 const myRoot = root + 'fyb/user'
 
-const myUrls = {
-  userInfo: myRoot + '/getUserInfo'
-}
-
 export {
-  myUrls
+  myRoot
 }

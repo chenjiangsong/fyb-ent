@@ -13,6 +13,7 @@ FastClick.attach(document.body)
 Vue.config.productionTip = false
 
 sync(store, router)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#mod-app',

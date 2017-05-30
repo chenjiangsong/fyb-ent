@@ -11,7 +11,21 @@ export default {
     Tabbar
   },
   mounted () {
-    API_MY.getUserInfo()
+    API_MY.getUserInfo().then((res) => {
+      console.log(res)
+    })
+    API_MY.getMemberInfo().then((res) => {
+      console.log(res)
+    })
+    API_MY.getMemberInfo().then((res) => {
+      console.log(res)
+    })
+    API_MY.getMemberInfo().then((res) => {
+      console.log(res)
+    })
+    API_MY.getMemberInfo().then((res) => {
+      console.log(res)
+    })
   }
 }
 </script>

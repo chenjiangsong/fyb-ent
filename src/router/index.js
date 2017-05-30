@@ -39,7 +39,7 @@ router.beforeEach((to, from, next) => {
 })
 
 router.afterEach(() => {
-  store.commit('updateRenderStatus', {isRendering: false})
+  // store.commit('updateRenderStatus', {isRendering: false})
 })
 
 export default router

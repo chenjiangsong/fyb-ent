@@ -1,7 +1,7 @@
-import axios from 'axios'
+import ajax from '@/global/ajax'
 
 import {
-  myUrls
+  myRoot
 } from './urls'
 
 /**
@@ -10,7 +10,7 @@ import {
  * @param {*} params
  */
 function get (url, params) {
-  return axios.get(url, { params })
+  return ajax.get(url, { params })
 }
 
 /**
@@ -28,7 +28,10 @@ function get (url, params) {
 
 const my = {
   getUserInfo (params) {
-    return get(myUrls.userInfo, params)
+    return get(myRoot + '/getUserInfo', params)
+  },
+  getMemberInfo (params) {
+    return get(myRoot + '/getMemberInfo', params)
   }
 }
 
