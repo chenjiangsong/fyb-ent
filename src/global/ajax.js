@@ -47,7 +47,6 @@ const resCollect = {
 }
 
 function slow (iterable) {
-  console.log(iterable)
   return new Promise((resolve, reject) => {
     const len = iterable.length
     let count = 0
