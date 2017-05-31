@@ -1,14 +1,17 @@
 import axios from 'axios'
 import store from '@/store'
+import { getuuid, promiseSlow, Collector } from 'util'
 
 const { assist } = store.state
+const collector = new Collector()
+console.log(collector)
+let timer = null
 
 axios.interceptors.request.use(function (config) {
   if (assist.renderStatus) {
-    const uuid = Math.random().toString(36).substring(3, 8)
+    const uuid = getuuid()
     config.uuid = uuid
-    console.log(uuid)
-    resCollect.collect(uuid)
+    collector.collect(uuid)
   }
   return config
 }, function (error) {
@@ -17,10 +20,11 @@ axios.interceptors.request.use(function (config) {
 
 axios.interceptors.response.use(function (res) {
   const uuid = res.config.uuid
-  resCollect.list[uuid].resolve()
-  if (!resCollect.timer) {
-    resCollect.timer = setTimeout(function () {
-      slow(resCollect.promiseList).then(() => {
+  console.log(collector.list[uuid])
+  collector.list[uuid].resolve()
+  if (!timer) {
+    timer = setTimeout(function () {
+      promiseSlow(collector.plist).then(() => {
         store.commit('updateRenderStatus', { isRendering: false })
       })
     })
@@ -30,36 +34,36 @@ axios.interceptors.response.use(function (res) {
   return Promise.reject(error)
 })
 
-const resCollect = {
-  timer: null,
-  list: [],
-  promiseList: [],
-  collect (uuid) {
-    const self = this
-    const p = new Promise((resolve, reject) => {
-      self.list[uuid] = {
-        resolve,
-        reject
-      }
-    })
-    self.promiseList.push(p)
-  }
-}
+// const resCollect = {
+//   timer: null,
+//   list: [],
+//   promiseList: [],
+//   collect (uuid) {
+//     const self = this
+//     const p = new Promise((resolve, reject) => {
+//       self.list[uuid] = {
+//         resolve,
+//         reject
+//       }
+//     })
+//     self.promiseList.push(p)
+//   }
+// }
 
-function slow (iterable) {
-  return new Promise((resolve, reject) => {
-    const len = iterable.length
-    let count = 0
+// function slow (iterable) {
+//   return new Promise((resolve, reject) => {
+//     const len = iterable.length
+//     let count = 0
 
-    iterable.forEach((promise) => {
-      promise.then((v) => {
-        count++
-        if (count === len) {
-          resolve()
-        }
-      })
-    })
-  })
-}
+//     iterable.forEach((promise) => {
+//       promise.then((v) => {
+//         count++
+//         if (count === len) {
+//           resolve()
+//         }
+//       })
+//     })
+//   })
+// }
 
 export default axios

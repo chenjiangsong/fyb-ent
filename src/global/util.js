@@ -114,3 +114,56 @@ export function unique (arr) {
     return [...new Set(arr)]
   }
 }
+
+/**
+ * uuid
+ */
+export function getuuid () {
+  return Math.random().toString(36).substring(3, 8)
+}
+
+/**
+ *  最慢 Promise
+ */
+export function promiseSlow (iterable) {
+  return new Promise((resolve, reject) => {
+    const len = iterable.length
+    let count = 0
+
+    iterable.forEach((promise) => {
+      promise.then((v) => {
+        count++
+        if (count === len) {
+          resolve()
+        }
+      }, () => {
+        reject()
+      })
+    })
+  })
+}
+
+/**
+ * request collector
+ */
+
+export class Collector {
+  constructor () {
+    this.list = []
+    this.plist = []
+  }
+
+  collect (id) {
+    const p = new Promise((resolve, reject) => {
+      this.list[id] = { resolve, reject }
+    })
+
+    this.plist.push(p)
+    return p
+  }
+
+  reset () {
+    this.list = []
+    this.plist = []
+  }
+}
