@@ -1,15 +1,14 @@
 <template>
   <div id="app">
-    <transition name="bounce">
-      <router-view></router-view>
+    <transition :name="'vux-pop-' + (direction === 'forward' ? 'in' : 'out')">
+      <router-view class="router-view"></router-view>
     </transition>
-    <loading v-model="renderStatus"></loading>
   </div>
 </template>
 
 <script>
 import { Loading } from 'vux'
-import { mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   name: 'app',
@@ -17,13 +16,12 @@ export default {
     Loading
   },
   computed: {
-    ...mapGetters({
-      renderStatus: 'renderStatus'
+    ...mapState({
+      direction: state => state.global.routerDirect
     })
   },
   data () {
     return {
-      transitionName: ''
     }
   },
   created () {
@@ -31,28 +29,50 @@ export default {
   },
   mounted () {
     console.log('mounted')
-  },
-  watch: {
-    '$route' (to, from) {
-      const toDepth = to.path.split('/').length
-      const fromDepth = from.path.split('/').length
-      this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
-    },
-    renderStatus (newVal, oldVal) {
-      console.log(newVal, oldVal)
-    }
   }
 }
 </script>
 
 <style lang="less">
+@import '~vux/src/styles/reset.less';
+
 html, body{
   height: 100%;
 }
 #app{
   height: 100%;
 }
-
+.router-view{
+  width: 100%;
+}
+.vux-pop-out-enter-active,
+.vux-pop-out-leave-active,
+.vux-pop-in-enter-active,
+.vux-pop-in-leave-active {
+  will-change: transform;
+  transition: all 500ms;
+  height: 100%;
+  top: 46px;
+  position: absolute;
+  backface-visibility: hidden;
+  perspective: 1000;
+}
+.vux-pop-out-enter {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
+.vux-pop-out-leave-active {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.vux-pop-in-enter {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.vux-pop-in-leave-active {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
 
 /*#app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

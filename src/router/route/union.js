@@ -7,6 +7,9 @@ export default [
   {
     path: '/fyb/house/union',
     name: 'unionHome',
-    component: unionHome
+    component: unionHome,
+    meta: {
+      home: true
+    }
   }
 ]

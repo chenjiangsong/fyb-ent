@@ -1,5 +1,6 @@
 <template>
   <div class="search-index-wrap">
+    <router-link :to="{name: 'searchList'}">房源列表</router-link>
     <tabbar></tabbar>
   </div>
 </template>
@@ -11,24 +12,24 @@ export default {
     Tabbar
   },
   mounted () {
-    API_MY.getUserInfo().then((res) => {
-      console.log('第一个请求')
-      return API_MY.getMemberInfo()
-    }).then((res) => {
-      console.log('第一个请求后的请求')
-    })
+    // API_MY.getUserInfo().then((res) => {
+    //   console.log('第一个请求')
+    //   return API_MY.getMemberInfo()
+    // }).then((res) => {
+    //   console.log('第一个请求后的请求')
+    // })
     API_MY.getMemberInfo().then((res) => {
       console.log('第二个请求')
     })
-    API_MY.getMemberInfo().then((res) => {
-      console.log('第三个请求')
-    })
-    API_MY.getMemberInfo().then((res) => {
-      console.log('第四个请求')
-    })
-    API_MY.getMemberInfo().then((res) => {
-      console.log('第五个请求')
-    })
+    // API_MY.getMemberInfo().then((res) => {
+    //   console.log('第三个请求')
+    // })
+    // API_MY.getMemberInfo().then((res) => {
+    //   console.log('第四个请求')
+    // })
+    // API_MY.getMemberInfo().then((res) => {
+    //   console.log('第五个请求')
+    // })
   }
 }
 </script>

@@ -129,13 +129,10 @@ export function promiseSlow (iterable) {
   return new Promise((resolve, reject) => {
     const len = iterable.length
     let count = 0
-    console.log(len)
     iterable.forEach((promise) => {
       promise.then((v) => {
-        console.log('count:', count)
         count++
         if (count === len) {
-          console.log('resolve')
           resolve()
         }
       }, () => {

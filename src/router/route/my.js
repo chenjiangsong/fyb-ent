@@ -7,6 +7,9 @@ export default [
   {
     path: '/fyb/house/my',
     name: 'myHome',
-    component: myHome
+    component: myHome,
+    meta: {
+      home: true
+    }
   }
 ]

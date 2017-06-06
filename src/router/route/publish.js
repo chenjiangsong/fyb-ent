@@ -8,6 +8,9 @@ export default [
   {
     path: '/fyb/house/publish',
     name: 'publishHome',
-    component: publishHome
+    component: publishHome,
+    meta: {
+      home: true
+    }
   }
 ]
