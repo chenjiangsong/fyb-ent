@@ -9,7 +9,7 @@
 
 <script>
 import { Loading } from 'vux'
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'app',
@@ -17,8 +17,8 @@ export default {
     Loading
   },
   computed: {
-    ...mapState({
-      renderStatus: state => state.assist.renderStatus
+    ...mapGetters({
+      renderStatus: 'renderStatus'
     })
   },
   data () {
@@ -26,11 +26,20 @@ export default {
       transitionName: ''
     }
   },
+  created () {
+    console.log('created')
+  },
+  mounted () {
+    console.log('mounted')
+  },
   watch: {
     '$route' (to, from) {
       const toDepth = to.path.split('/').length
       const fromDepth = from.path.split('/').length
       this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+    },
+    renderStatus (newVal, oldVal) {
+      console.log(newVal, oldVal)
     }
   }
 }

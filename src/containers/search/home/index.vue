@@ -12,19 +12,22 @@ export default {
   },
   mounted () {
     API_MY.getUserInfo().then((res) => {
-      console.log(res)
+      console.log('第一个请求')
+      return API_MY.getMemberInfo()
+    }).then((res) => {
+      console.log('第一个请求后的请求')
     })
     API_MY.getMemberInfo().then((res) => {
-      console.log(res)
+      console.log('第二个请求')
     })
     API_MY.getMemberInfo().then((res) => {
-      console.log(res)
+      console.log('第三个请求')
     })
     API_MY.getMemberInfo().then((res) => {
-      console.log(res)
+      console.log('第四个请求')
     })
     API_MY.getMemberInfo().then((res) => {
-      console.log(res)
+      console.log('第五个请求')
     })
   }
 }
