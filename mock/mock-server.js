@@ -2,17 +2,19 @@ const express = require('express')
 const app = express()
 const Mock = require('mockjs')
 const util = require('./util')
+const co = require('co')
 
-app.get('/fybWeixinEnt/main/getSign', async function (req, res) {
+app.get('/fybWeixinEnt/main/getSign', function (req, res) {
   const params = {
     noncestr: util.createNoncestr(),
     timestamp: util.getTimeStamp(),
     url: req.query.url
   }
-  const a = await util.getToken()
-  console.log(a)
-  // console.log(11)
-  util.getToken()
+
+  rp('http://localhost:8081/fybWeixinEnt/aaa').then((res) => {
+    console.log(res)
+  })
+  
   res.send({
     url: req.query.url
   })

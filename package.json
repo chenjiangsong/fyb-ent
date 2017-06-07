@@ -5,7 +5,7 @@
   "author": "chenjiangsong <274815408@qq.com>",
   "private": true,
   "scripts": {
-    "dev": "node build/dev-server.js & nodemon mock/index.js",
+    "dev": "node build/dev-server.js & nodemon mock/mock-server.js",
     "start": "node build/dev-server.js",
     "build": "node build/build.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
@@ -15,7 +15,9 @@
   },
   "dependencies": {
     "axios": "^0.16.1",
+    "co": "^4.6.0",
     "fastclick": "^1.0.6",
+    "request-promise": "^4.2.1",
     "vue": "^2.2.6",
     "vue-router": "^2.3.1",
     "vuex": "^2.3.1",

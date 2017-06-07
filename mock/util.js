@@ -1,12 +1,10 @@
-const request = require('request')
-const config = require('./config')
+const rp = require('request-promise')
+// const config = require('./config')
 
 const util = {}
 
-util.getToken = function () {
-  request.get('http://fe.iwjw.com:8888/api/fete_api/2BmE9Z/5kbe8B/mock/fybWeixinEnt/fyb/house/getUserRemark').on('response', function (res) {
-    return res
-  })
+util.getToken = function* () {
+  yield rp('http://localhost:8081/fybWeixinEnt/aaa')
 }
 
 util.getTicket = function () {
