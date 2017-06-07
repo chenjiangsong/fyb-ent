@@ -1,24 +1,16 @@
 <template>
   <div id="app">
-    <transition :name="'vux-pop-' + (direction === 'forward' ? 'in' : 'out')">
-      <router-view class="router-view"></router-view>
-    </transition>
+    <router-view class="router-view"></router-view>
   </div>
 </template>
 
 <script>
 import { Loading } from 'vux'
-import { mapState } from 'vuex'
 
 export default {
   name: 'app',
   components: {
     Loading
-  },
-  computed: {
-    ...mapState({
-      direction: state => state.global.routerDirect
-    })
   },
   data () {
     return {
@@ -34,7 +26,7 @@ export default {
 </script>
 
 <style lang="less">
-@import '~vux/src/styles/reset.less';
+// @import '~vux/src/styles/reset.less';
 
 html, body{
   height: 100%;
@@ -44,34 +36,6 @@ html, body{
 }
 .router-view{
   width: 100%;
-}
-.vux-pop-out-enter-active,
-.vux-pop-out-leave-active,
-.vux-pop-in-enter-active,
-.vux-pop-in-leave-active {
-  will-change: transform;
-  transition: all 500ms;
-  height: 100%;
-  top: 46px;
-  position: absolute;
-  backface-visibility: hidden;
-  perspective: 1000;
-}
-.vux-pop-out-enter {
-  opacity: 0;
-  transform: translate3d(-100%, 0, 0);
-}
-.vux-pop-out-leave-active {
-  opacity: 0;
-  transform: translate3d(100%, 0, 0);
-}
-.vux-pop-in-enter {
-  opacity: 0;
-  transform: translate3d(100%, 0, 0);
-}
-.vux-pop-in-leave-active {
-  opacity: 0;
-  transform: translate3d(-100%, 0, 0);
 }
 
 /*#app {

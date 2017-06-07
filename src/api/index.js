@@ -1,8 +1,12 @@
 import ajax from '@/global/ajax'
 
-import {
-  myRoot
-} from './urls'
+/**
+ *  设置各api的root，方便给proxyTable来filter调用
+ *  dev apiRoot 为'/api' prod 为空
+ */
+
+const apiRoot = process.env.API_ROOT
+const root = window.pageConfig.siteUrl + apiRoot
 
 /**
  *  封装axios get方法
@@ -25,7 +29,7 @@ function get (url, params) {
 /**
  * 个人中心接口
  */
-
+const myRoot = root + 'fyb/user'
 const my = {
   getUserInfo (params) {
     return get(myRoot + '/getUserInfo', params)
@@ -35,6 +39,16 @@ const my = {
   }
 }
 
+/**
+ * wx相关接口
+ */
+
+const wx = {
+  getSign (params) {
+    return get(root + 'main/getSign', params)
+  }
+}
 export {
-  my
+  my,
+  wx
 }

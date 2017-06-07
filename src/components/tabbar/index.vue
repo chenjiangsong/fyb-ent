@@ -46,13 +46,14 @@ export default {
     font-size: 18px;
   }
   /**
-    vux
+    vux style
   **/
   .weui-tabbar, .weui-tabbar__item{
     background-color: rgba(25, 24, 30, 1);
   }
   .weui-tabbar__label{
     color: #fff;
+    font-size: 14px;
   }
   .weui-tabbar__item.weui-bar__item_on .weui-tabbar__icon > i,
   .weui-tabbar__item.weui-bar__item_on .weui-tabbar__label{
