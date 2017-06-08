@@ -30,14 +30,23 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       mockServer: {
-        target: 'http://127.0.0.1:8081',
-        // target: 'http://fe.iwjw.com:8888/api/fete_api/2BmE9Z/5kbe8B/mock/',
+        // target: 'http://127.0.0.1:8081',
+        target: 'http://fe.iwjw.com:8888/api/fete_api/2BmE9Z/5kbe8B/mock/',
         filter: function(pathname, req) {
           return /api/.test(req.url)
         },
         pathRewrite: {
             '/api' : '',     // rewrite path
         },
+      },
+      wxServer: {
+        target: 'http://127.0.0.1:8081',
+        filter: function(pathname, req) {
+          return /getSign/.test(req.url)
+        },
+        pathRewrite: {
+            '/api' : '',     // rewrite path
+        }
       }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"

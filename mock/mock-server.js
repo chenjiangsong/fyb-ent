@@ -3,21 +3,37 @@ const app = express()
 const Mock = require('mockjs')
 const util = require('./util')
 const co = require('co')
+const config = require('./config')
+
+require('./schedule')
 
 app.get('/fybWeixinEnt/main/getSign', function (req, res) {
-  const params = {
-    noncestr: util.createNoncestr(),
-    timestamp: util.getTimeStamp(),
-    url: req.query.url
-  }
+  co(function* () {
+    const noncestr = util.createNoncestr()
+    const timestamp = util.getTimeStamp()
+    
+    const params = {
+      noncestr: noncestr,
+      timestamp: timestamp,
+      url: req.query.url
+    }
 
-  rp('http://localhost:8081/fybWeixinEnt/aaa').then((res) => {
-    console.log(res)
+    const signature = yield util.getSignature(params)
+
+    res.send({
+      status: 1,
+      msg: 'ok',
+      data: {
+        appId: config.appid,
+        timestamp: timestamp,
+        nonceStr: noncestr,
+        signature: signature
+      }
+    })
+
   })
-  
-  res.send({
-    url: req.query.url
-  })
+
+
 })
 
 app.get('/fybWeixinEnt/*', (req, res) => {
