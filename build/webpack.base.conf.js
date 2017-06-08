@@ -32,8 +32,12 @@ var webpackConfig = {
       '@': resolve('src'),
       'api': resolve('src/api/'),
       'util': resolve('src/global/util'),
+      'weixin': resolve('src/global/wx'),
       'config': resolve('src/global/config')
     }
+  },
+  externals: {
+    wx: 'window.wx'
   },
   module: {
     rules: [

@@ -13,7 +13,7 @@ const root = window.pageConfig.siteUrl + apiRoot
  * @param {*} url
  * @param {*} params
  */
-function get (url, params) {
+async function get (url, params) {
   return ajax.get(url, { params })
 }
 
@@ -42,10 +42,10 @@ const my = {
 /**
  * wx相关接口
  */
-
+const wxRoot = window.pageConfig.siteUrl
 const wx = {
   getSign (params) {
-    return get(root + 'main/getSign', params)
+    return get(wxRoot + 'main/getSign', params)
   }
 }
 export {

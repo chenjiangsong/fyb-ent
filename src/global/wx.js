@@ -3,11 +3,29 @@ import { wx as API_WX } from 'api'
  * 微信jssdk 注册url
  * @param {*} url
  */
-export function registerUrl (url) {
+export async function registerUrl (url) {
   const params = {
-    url
+    currentUrl: url,
+    app: 'fyb'
   }
-  return API_WX.getSign(params)
+  const res = await API_WX.getSign(params)
+  if (res && res.status === 1) {
+    const config = Object.assign({
+      debug: true,
+      jsApiList: [
+        'hideMenuItems',
+        'onMenuShareAppMessage',
+        'chooseImage',
+        'uploadImage',
+        'previewImage',
+        'onMenuShareTimeline',
+        'getLocation',
+        'scanQRCode'
+      ]
+    }, res.data)
+    console.log(config)
+    wx.config(config)
+  }
 }
 
 /**

@@ -19,7 +19,7 @@
 <script>
 import { Tabbar } from '@/components'
 import { my as API_MY } from 'api'
-import { modifyTitle, registerUrl } from 'util'
+import { modifyTitle, registerUrl } from 'weixin'
 
 export default {
   components: {
@@ -27,12 +27,14 @@ export default {
   },
   mounted () {
     modifyTitle('找房')
-
-    API_MY.getMemberInfo().then((res) => {
-      console.log('第二个请求')
-    })
-    console.log(location.href)
     registerUrl(location.href)
+    this.getUserInfo()
+  },
+  methods: {
+    async getUserInfo () {
+      const userInfo = await API_MY.getUserInfo()
+      console.log(userInfo)
+    }
   }
 }
 </script>
