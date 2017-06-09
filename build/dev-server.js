@@ -50,6 +50,11 @@ Object.keys(proxyTable).forEach(function (context) {
   app.use(proxyMiddleware(options.filter || context, options))
 })
 
+//修改微信title的iframe 防止重复加载
+app.get('/isLive', function(req, res) {
+  res.status(404).end()
+})
+
 // handle fallback for HTML5 history API
 app.use(require('connect-history-api-fallback')())
 

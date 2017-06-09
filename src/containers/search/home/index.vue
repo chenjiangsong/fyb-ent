@@ -28,7 +28,7 @@ export default {
   mounted () {
     modifyTitle('找房')
     registerUrl(location.href)
-    this.getUserInfo()
+    // this.getUserInfo()
   },
   methods: {
     async getUserInfo () {
