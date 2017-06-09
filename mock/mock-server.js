@@ -15,7 +15,7 @@ app.get('/fybWeixinEnt/main/getSign', function (req, res) {
     const params = {
       noncestr: noncestr,
       timestamp: timestamp,
-      url: req.query.url
+      url: req.query.currentUrl
     }
 
     const signature = yield util.getSignature(params)

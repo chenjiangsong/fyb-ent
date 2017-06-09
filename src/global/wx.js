@@ -24,7 +24,6 @@ export async function registerUrl (url) {
         'scanQRCode'
       ]
     }, res.data)
-    console.log(config)
     wx.config(config)
   }
 }

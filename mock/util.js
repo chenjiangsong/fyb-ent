@@ -74,10 +74,10 @@ util.getSignature = function (params) {
       token = yield util.getToken()
     }
     if (!ticket) {
-      ticket = yield util.getTicket()
+      ticket = yield util.getTicket(token)
     }
 
-    const stringA = `jsapi_ticket=${ticket}&noncestr=${params.nonceStr}&timestamp=${params.timestamp}&url=${params.url}`
+    const stringA = `jsapi_ticket=${ticket}&noncestr=${params.noncestr}&timestamp=${params.timestamp}&url=${params.url}`
     return (new Hashes.SHA1).hex(stringA)
   })
 }
