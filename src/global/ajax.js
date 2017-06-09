@@ -1,5 +1,3 @@
-import axios from 'axios'
-
 axios.defaults.timeout = 20000
 
 axios.interceptors.request.use(function (config) {

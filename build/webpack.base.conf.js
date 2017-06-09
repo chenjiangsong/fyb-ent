@@ -36,9 +36,6 @@ var webpackConfig = {
       'config': resolve('src/global/config')
     }
   },
-  externals: {
-    wx: 'window.wx'
-  },
   module: {
     rules: [
       {

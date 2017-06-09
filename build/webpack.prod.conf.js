@@ -9,6 +9,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 var WebpackAssetsManifest = require('webpack-assets-manifest')
+var provide = require('../config/provide')
 
 var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -28,9 +29,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     chunkFilename: utils.assetsPath('./[name].[chunkhash].js')
   },
   plugins: [
-    new webpack.ProvidePlugin({
-      axios: 'axios'
-    }),
+    new webpack.ProvidePlugin(provide),
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env

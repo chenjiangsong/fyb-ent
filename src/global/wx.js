@@ -1,5 +1,4 @@
 import { wx as API_WX } from 'api'
-import wx from 'wx'
 /**
  * 微信jssdk 注册url
  * @param {*} url
