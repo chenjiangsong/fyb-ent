@@ -33,8 +33,7 @@ var webpackConfig = {
       'api': resolve('src/api/'),
       'util': resolve('src/global/util'),
       'weixin': resolve('src/global/wx'),
-      'config': resolve('src/global/config'),
-      'eventEmitter': resolve('src/global/events')
+      'config': resolve('src/global/config')
     }
   },
   module: {

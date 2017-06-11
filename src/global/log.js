@@ -7,7 +7,9 @@ beta: dataCollect=http://10.168.6.201:8112/dataCollect/
 pro: dataCollect=http://10.157.128.179/dataCollect/
  */
 // http://userappbeta.iwjw.com:8112/dataCollect/
+
 import jsonp from 'jsonp'
+
 const logUrl = pageConfig.datacollectUrl
 
 const log = {
@@ -20,7 +22,7 @@ const log = {
   },
 
   clickTrigger (options) {
-    this._resetLogData()
+    this._reset()
     this._logData = Object.assign(this._logData, options, {
       date: new Date()
     })
@@ -36,14 +38,28 @@ const log = {
     }
   },
 
-  _send () {
+  _convertUrl () {
     const log = this
-    jsonp(logUrl + 'track/user/web.do', {
-      params: log._logData
+    let url = logUrl + 'track/user/web.do'
+    Object.keys(log._logData).forEach((key, index) => {
+      const value = log._logData[key]
+      let param = `${key}=${value}`
+      if (index === 0) {
+        param = `?${param}`
+      } else {
+        param = `&${param}`
+      }
+      url = url + param
     })
+    return url
+  },
+
+  _send () {
+    const url = this._convertUrl()
+    jsonp(url)
   }
 }
 
-log.init(pageConfig)
+log.init()
 
 export default log

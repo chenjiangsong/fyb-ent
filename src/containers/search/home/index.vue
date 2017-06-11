@@ -3,7 +3,7 @@
     <!-- 头部搜索 -->
     <header class="header-wrap">
       <div class="search-bar">
-        <span class="search-label">上海租房<i class="iconfont icon-arrow_down_slim"></i></span>
+        <span class="search-label" @click="log">上海租房<i class="iconfont icon-arrow_down_slim"></i></span>
         <input type="text" placeholder="请输入小区名/地铁/行政区/板块">
         <i class="iconfont icon-saoma iconfont-scan"></i>
       </div>
@@ -34,6 +34,12 @@ export default {
     async getUserInfo () {
       const userInfo = await API_MY.getUserInfo()
       console.log(userInfo)
+    },
+    log () {
+      this.$events.emit('log', {
+        sk: 12,
+        ck: 12121
+      })
     }
   }
 }

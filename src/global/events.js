@@ -5,9 +5,9 @@
 import EventEmitter from 'events'
 import log from './log'
 
-const eventEmitter = new EventEmitter()
+const events = new EventEmitter()
 
-eventEmitter.on('log', (options) => {
+events.on('log', (options) => {
   switch (options.type) {
     case 'basic':
       log._send()
@@ -18,8 +18,4 @@ eventEmitter.on('log', (options) => {
   }
 })
 
-eventEmitter.emit('log', {
-  type: 'basic'
-})
-
-export default eventEmitter
+export default events

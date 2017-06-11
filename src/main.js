@@ -7,10 +7,13 @@ import store from './store'
 import { sync } from 'vuex-router-sync'
 import 'vux/src/styles/weui/weui.less'
 import FastClick from 'fastclick'
+import events from './global/events'
 
 FastClick.attach(document.body)
 
 Vue.config.productionTip = false
+
+Vue.prototype.$events = events
 
 sync(store, router)
 
