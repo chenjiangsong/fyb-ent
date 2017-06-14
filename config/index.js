@@ -40,12 +40,13 @@ module.exports = {
         },
       },
       wxServer: {
-        target: 'http://127.0.0.1:8081',
+        target: 'http://127.0.0.1:8082',
         filter: function(pathname, req) {
+          console.log(req.url)
           return /getSign/.test(req.url)
         },
         pathRewrite: {
-            '/api' : '',     // rewrite path
+            '/fybWeixinEnt/main/getSign' : '/getsign',     // rewrite path
         }
       }
     },

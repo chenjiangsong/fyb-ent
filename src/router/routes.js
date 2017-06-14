@@ -1,11 +1,13 @@
-import Search from './route/search'
-import Publish from './route/publish'
-import Union from './route/union'
-import My from './route/my'
+import Search from './routes/search'
+import Publish from './routes/publish'
+import Union from './routes/union'
+import My from './routes/my'
+import Invite from './routes/invite'
 
 export default [].concat(
   Search,
   Publish,
   Union,
-  My
+  My,
+  Invite
 )

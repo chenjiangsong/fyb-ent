@@ -166,3 +166,16 @@ export class Collector {
     this.plist = []
   }
 }
+
+/**
+ * 表单限制数字输入
+ * @param {*} num
+ * @param {*} length
+ */
+export const filterNum = (num, length) => {
+  if (length) {
+    return num.substring(0, length).replace(/[^\d]/g, '')
+  } else {
+    return num.replace(/[^\d]/g, '')
+  }
+}

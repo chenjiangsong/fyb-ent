@@ -1,3 +1,4 @@
 module.exports = {
-  axios: 'axios'
+  axios: 'axios',
+  modifyTitle: ['weixin', 'modifyTitle']
 }
