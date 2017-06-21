@@ -40,14 +40,13 @@ module.exports = {
         },
       },
       wxServer: {
-        target: 'http://127.0.0.1:8082',
+        target: 'http://127.0.0.1:8081',
         filter: function(pathname, req) {
-          console.log(req.url)
           return /getSign/.test(req.url)
         },
-        pathRewrite: {
-            '/fybWeixinEnt/main/getSign' : '/getsign',     // rewrite path
-        }
+        // pathRewrite: {
+        //     '/fybWeixinEnt/main/getSign' : '/getsign',     // rewrite path
+        // }
       }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"

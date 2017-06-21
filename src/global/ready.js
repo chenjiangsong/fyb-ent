@@ -8,3 +8,7 @@
   iconfontLink.setAttribute('rel', 'stylesheet')
   document.getElementsByTagName('head')[0].appendChild(iconfontLink)
 })()
+
+/**
+ * 动态生成rem
+ */

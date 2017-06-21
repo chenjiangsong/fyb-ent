@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Routes from './routes'
-import events from '../global/events'
+import { events } from '@/global/events'
 
 Vue.use(VueRouter)
 
@@ -13,6 +13,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   // 每个页面进行埋点
+  console.log(events)
   events.emit('log', {
     type: 'basic'
   })

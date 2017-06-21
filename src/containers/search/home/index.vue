@@ -18,7 +18,7 @@
 </template>
 <script>
 import { Tabbar } from '@/components'
-import { my as API_MY } from 'api'
+import { API_MY } from 'api'
 import { modifyTitle, registerUrl } from 'weixin'
 
 export default {
@@ -28,12 +28,16 @@ export default {
   mounted () {
     modifyTitle('找房')
     registerUrl(location.href)
-    // this.getUserInfo()
+    this.getUserInfo()
   },
   methods: {
     async getUserInfo () {
-      const userInfo = await API_MY.getUserInfo()
-      console.log(userInfo)
+      const res = await API_MY.getUserInfo()
+      if (res.status === 1) {
+        console.log(res.data)
+      } else {
+        smallnote(res.msg)
+      }
     },
     log () {
       this.$events.emit('log', {

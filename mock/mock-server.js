@@ -33,7 +33,6 @@ app.get('/fybWeixinEnt/main/getSign', function (req, res) {
 
   })
 
-
 })
 
 app.get('/fybWeixinEnt/*', (req, res) => {

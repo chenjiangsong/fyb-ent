@@ -21,7 +21,7 @@ const log = {
     this._reset()
   },
 
-  clickTrigger (options) {
+  trigger (options) {
     this._reset()
     this._logData = Object.assign(this._logData, options, {
       date: new Date()

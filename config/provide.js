@@ -1,4 +1,6 @@
 module.exports = {
   axios: 'axios',
-  modifyTitle: ['weixin', 'modifyTitle']
+  util: 'util',
+  modifyTitle: ['weixin', 'modifyTitle'],
+  smallnote: ['util', 'smallnote']
 }

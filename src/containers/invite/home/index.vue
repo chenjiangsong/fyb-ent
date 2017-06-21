@@ -22,6 +22,7 @@
         v-model="mobile"
         :show-clear="false"
         @on-change="filterPhone"
+        ref="mobileInput"
       >
         <div
           slot="right"
@@ -46,13 +47,17 @@
 
     <my-button text="邀请" @on-click="submit"></my-button>
     <p class="tips">我们会对信息进行加密，保护您及您朋友的隐私！</p>
+
+    <check-mobile-alert v-model="show" :check-result="checkResult"></check-mobile-alert>
   </div>  
 </template>
 <script>
 import bgUrl from 'assets/invite_bg.png'
 import { Group, XInput, Radio } from 'vux'
 import { MyButton } from '@/components'
+import CheckMobileAlert from './check-mobile-alert.vue'
 import { filterNum } from 'util'
+import { API_MY } from 'api'
 
 export default {
   data () {
@@ -71,30 +76,39 @@ export default {
       ],
       guideValue: '',
       name: '',
-      mobile: ''
+      mobile: '',
+      checkResult: {},
+      show: false
     }
   },
   created () {
     modifyTitle('邀请注册')
   },
   methods: {
-    checkMobile () {
-      return 9
+    async checkMobile () {
+      const params = {
+        mobile: this.mobile
+      }
+      const res = await API_MY.checkMobile(params)
+      if (res.status === 1) {
+        console.log(res)
+        this.checkResult = res.data
+      }
     },
     submit () {
-      return 9
+      smallnote(this.mobile)
     },
     filterPhone (e) {
-      const target = e.target
-      this.mobile = filterNum(target.value)
-      target.value = this.mobile
+      this.mobile = filterNum(this.mobile)
+      this.$refs.mobileInput.currentValue = this.mobile
     }
   },
   components: {
     Group,
     XInput,
     Radio,
-    MyButton
+    MyButton,
+    CheckMobileAlert
   }
 }
 </script>

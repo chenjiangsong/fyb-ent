@@ -13,7 +13,7 @@ const root = window.pageConfig.siteUrl + apiRoot
  * @param {*} url
  * @param {*} params
  */
-async function get (url, params) {
+function get (url, params) {
   return ajax.get(url, { params })
 }
 
@@ -30,12 +30,18 @@ async function get (url, params) {
  * 个人中心接口
  */
 const myRoot = root + 'fyb/user'
-const my = {
+const API_MY = {
+  // 获取用户信息
   getUserInfo (params) {
     return get(myRoot + '/getUserInfo', params)
   },
+  // 获取用户会员信息
   getMemberInfo (params) {
     return get(myRoot + '/getMemberInfo', params)
+  },
+  // 邀请注册时 检查被邀请用户手机号状态
+  checkMobile (params) {
+    return get(myRoot + '/checkUserInfo', params)
   }
 }
 
@@ -43,12 +49,12 @@ const my = {
  * wx相关接口
  */
 const wxRoot = window.pageConfig.siteUrl
-const wx = {
+const API_WX = {
   getSign (params) {
     return get(wxRoot + 'main/getSign', params)
   }
 }
 export {
-  my,
-  wx
+  API_MY,
+  API_WX
 }
